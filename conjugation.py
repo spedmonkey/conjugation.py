@@ -1,15 +1,12 @@
 import pandas as pd
 import random as random
+import logging
+import os
 
-'''
-https://www.sketchengine.eu/spanish-word-list/#tab-id-4-active verbs with number of frequencies
-C:\conjugation\Scripts\python.exe C:/Users/gime9/PycharmProjects/conjugation/conjugation.py
-Index(['infinitive', 'infinitive_english', 'mood', 'mood_english', 'tense',
-       'tense_english', 'verb_english', 'form_1s', 'form_2s', 'form_3s',
-       'form_1p', 'form_2p', 'form_3p', 'gerund', 'gerund_english',
-       'pastparticiple', 'pastparticiple_english', 'importance'],
-      dtype='object')
-'''
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
+logger.setLevel(os.environ.get("LOGLEVEL", "DEBUG"))
+
 class Conjugation(object):
 	def __init__(self):
 		verbs_df = self.load_dfs()
@@ -48,9 +45,8 @@ class Conjugation(object):
 			  verbs_df[(verbs_df.values.ravel() == random_verb).reshape(verbs_df.shape).any(1)]['verb_english'].values)
 		# print (verbs_df[(verbs_df.values.ravel() == random_verb).reshape(verbs_df.shape).any(1)].columns )
 
-
 		var = input("Please enter something: ")
-		print("You entered: " + var)
+		logger.info("You entered: {0}".format(var))
 
 		for character in replace_character_list:
 			english_var = self.replace_characters(var, character[0], character[1])
@@ -60,7 +56,7 @@ class Conjugation(object):
 		if  (english_var == english_random_verb):
 			print (f"{bcolors.OKGREEN}Correct:{bcolors.ENDC} you entered: {english_var} verb is: {random_verb}")
 		else:
-			print (f"{bcolors.WARNING}Incorrect:{bcolors.ENDC} you entered: {0} verb is: {1}".format(english_var, random_verb))
+			print (f"{bcolors.WARNING}Incorrect:{bcolors.ENDC} you entered: {english_var} verb is: {random_verb}")
 		print ("=============================================================================================")
 		self.start_event_loop(verbs_df)
 
@@ -119,4 +115,14 @@ for index, row in verbs_df.iterrows():
 	frequency_list.append(frequency)
 
 verbs_df.insert(17, "frequency", frequency_list, True)
+'''
+
+'''
+https://www.sketchengine.eu/spanish-word-list/#tab-id-4-active verbs with number of frequencies
+C:\conjugation\Scripts\python.exe C:/Users/gime9/PycharmProjects/conjugation/conjugation.py
+Index(['infinitive', 'infinitive_english', 'mood', 'mood_english', 'tense',
+       'tense_english', 'verb_english', 'form_1s', 'form_2s', 'form_3s',
+       'form_1p', 'form_2p', 'form_3p', 'gerund', 'gerund_english',
+       'pastparticiple', 'pastparticiple_english', 'importance'],
+      dtype='object')
 '''
