@@ -10,11 +10,6 @@ logger.setLevel(os.environ.get("LOGLEVEL", "DEBUG"))
 class Conjugation(object):
 	def __init__(self):
 		verbs_df = self.load_dfs()
-		frequency_list = []
-
-
-		#verbs_df.to_pickle('/Users/gime9/PycharmProjects/conjugation/verbs_pickle.pkl')
-		#verbs_df= verbs_df[verbs_df['tense'] == "Presente"]
 		self.start_event_loop(verbs_df)
 
 	def start_event_loop(self, verbs_df):
@@ -34,11 +29,8 @@ class Conjugation(object):
 		english_random_verb = random_verb
 
 		infinitive = verbs_df[(verbs_df.values.ravel() == random_verb).reshape(verbs_df.shape).any(1)]['infinitive'].values
-		if infinitive.size  == 0:
+		if infinitive.size == 0:
 			self.start_event_loop(verbs_df)
-
-
-		# print ( verbs_df[(verbs_df.values.ravel() == random_verb).reshape(verbs_df.shape).any(1)].values )
 		print(verbs_df[(verbs_df.values.ravel() == random_verb).reshape(verbs_df.shape).any(1)]['infinitive'].values,
 			  verbs_df[(verbs_df.values.ravel() == random_verb).reshape(verbs_df.shape).any(1)]['tense_english'].values,
 			  verbs_df[(verbs_df.values.ravel() == random_verb).reshape(verbs_df.shape).any(1)]['infinitive_english'].values,
@@ -63,7 +55,6 @@ class Conjugation(object):
 	def load_dfs(self):
 		#verbs_df = pd.read_csv("C:/Users/gime9/PycharmProjects/conjugation/jehle_verb_database.csv")
 		#verbs_pickle.pkl
-
 		verbs_df = pd.read_pickle(('/Users/gime9/PycharmProjects/conjugation/verbs_pickle.pkl'))
 		#verbs_in_order = pd.read_csv("C:/Users/gime9/PycharmProjects/conjugation/verbs_with_frequencies.csv")
 		return verbs_df
@@ -102,27 +93,3 @@ class bcolors:
 
 
 Conjugation = Conjugation()
-
-'''
-for index, row in verbs_df.iterrows():
-	infinitive = (row['infinitive'])
-	if self.return_rows(verbs_in_order, infinitive).size > 0:
-		row_frequency = self.return_rows(verbs_in_order, infinitive)
-		frequency = self.return_frequency(verbs_in_order, row_frequency).values[0]
-		frequency = int(frequency.replace(' ',''))
-	else:
-		frequency = 5000
-	frequency_list.append(frequency)
-
-verbs_df.insert(17, "frequency", frequency_list, True)
-'''
-
-'''
-https://www.sketchengine.eu/spanish-word-list/#tab-id-4-active verbs with number of frequencies
-C:\conjugation\Scripts\python.exe C:/Users/gime9/PycharmProjects/conjugation/conjugation.py
-Index(['infinitive', 'infinitive_english', 'mood', 'mood_english', 'tense',
-       'tense_english', 'verb_english', 'form_1s', 'form_2s', 'form_3s',
-       'form_1p', 'form_2p', 'form_3p', 'gerund', 'gerund_english',
-       'pastparticiple', 'pastparticiple_english', 'importance'],
-      dtype='object')
-'''
