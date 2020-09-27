@@ -1,0 +1,27 @@
+{
+  "sources": [
+    {
+      "web": "http://www.ghidinelli.com/free-spanish-conjugated-verb-database", 
+      "name": "Fred Jehle"
+    }
+  ], 
+  "version": "1.0", 
+  "description": "Fred Jehle, formerly a professor at Indiana University-Purdue University Fort Wayne, published approximately 600 verbs, fully conjugated in all moods and tenses, on his website in 1998. The resource helped students improve their verb use in addition to a variety of notes on other aspects of the language.\r\nThe roughly 600 verbs converted to 11,467 combinations of moods + tenses. \r\n\r\nIn coordination with Professor Jehle, this data is available via a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License for anyone to use for non-commercial purposes so long as you provide attribution. If you alter, transform or build upon this work then you may distribute the resulting work only under the same license.\r\n\r\nThe data is available as a CSV file or Postgres 9.x database dump.", 
+  "license": {
+    "url": "http://www.opendefinition.org/licenses/cc-by", 
+    "type": "cc-by", 
+    "title": "Creative Commons Attribution"
+  }, 
+  "title": "Spanish Verb Database", 
+  "keywords": [
+    "database", 
+    "language", 
+    "learning", 
+    "spanish"
+  ], 
+  "author": {
+    "name": "Brian Ghidinelli", 
+    "email": "brian-thedatahub@vfive.com"
+  }, 
+  "name": "spanish-verb-database"
+}
